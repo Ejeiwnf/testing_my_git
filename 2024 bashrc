@@ -1,0 +1,80 @@
+# Enable color support for ls and grep
+if [ -x "$(command -v dircolors)" ]; then
+  eval "$(dircolors -b)"
+fi
+
+# Color prompt for the terminal
+# PS1='\033[01;31m\u@\h\033[00m:\033[01;34m\w\033[00m\$ '
+
+# Color prompt for the terminal with username in red, hostname in green, and directory in blue
+PS1='\033[01;31m\u\033[00m@\033[01;32m\h\033[00m:\033[01;34m\w\033[00m\$ '
+
+# Custom colors for `ls` command
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Custom color for `ls` (folders in blue, executable files in green)
+LS_COLORS='di=1;34:ex=1;32'
+
+# Export LS_COLORS to apply the color changes
+export LS_COLORS
+
+# Add color to less
+export LESS='-R'
+
+# Highlight matching parenthesis in vim (or other editors)
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# Enable auto-cd (no need to type `cd` before directory name)
+shopt -s autocd
+
+# Enable command auto-correction
+shopt -s cdspell
+
+# Custom aliases with colors
+alias ll='ls -alF'
+alias l='ls -CF'
+
+# Set up a fancy date prompt
+# export PROMPT_COMMAND='echo -e "\033[1;36m$(date +%T)\033[0m"'
+
+# Set colorful grep output
+export GREP_COLOR='1;32'
+
+#### PS1="$ "
+rxfetch
+ls -a
+
+# Arch
+alias arch="proot-distro login archlinux --user tmpusr"
+alias toarch="cd ~/proots_scripts/ && ./startxfce4_arch.sh"
+
+# Termux my custom shortcuts
+alias fj="cd .."
+alias totermux="nvim ~/.termux/termux.properties"
+alias tobash="nvim ~/.bashrc"
+alias tostorage="cd ~/storage/shared/termux"
+alias la="ls -la"
+
+# Neovim
+alias to="nvim"
+alias tonvim="nvim ~/.config/nvim/init.lua"
+
+# Ubuntu
+alias ubuntu="proot-distro login ubuntu --user tmpusr"
+
+# Zig
+alias zg="zig run main.zig"
+alias zd="nvim main.zig"
+
+# Rust
+alias rt="cargo run"
+
+# Debian
+alias todeb="cd ~/proots_scripts && ./startxfce4_debian.sh"
+alias deb="proot-distro login debian --user tmpusr"
+
+# Termux Desktop
+alias desk="cd ~/proots_scripts &&& ./startxfce4_termux.sh"
+alias enddesk="~/Desktop/Shutdown.desktop"
